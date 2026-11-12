@@ -1,17 +1,4 @@
-// Ambil nama tamu dari alamat halaman, contoh:
-// index.html?to=Keluarga%20Bapak%20Andi
-const params = new URLSearchParams(window.location.search);
-const guest = params.get("to");
 
-if (guest && guest.trim()) {
-  document.getElementById("guest-name").textContent = guest.trim();
-}
-
-// Untuk tahap pertama, tombol menampilkan pemberitahuan.
-// Nanti tombol ini akan diarahkan ke halaman isi undangan yang kita buat berikutnya.
-document.getElementById("open-invitation").addEventListener("click", function () {
-  window.location.href = "halaman-kedua.html";
-});
 
 function openInvitation() {
 

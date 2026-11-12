@@ -1,54 +1,40 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>The Wedding of Nico & Fery</title>
 
   <!-- Font dari Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<script src="script.js"></script>
 
+<body>
   <main class="cover">
     <section class="invitation-card" aria-labelledby="wedding-title">
-
       <p class="eyebrow">THE WEDDING OF</p>
 
       <div class="small-flower" aria-hidden="true">❀</div>
 
-      <h1 id="wedding-title">
-        Nico <span>&amp;</span> Fery
-      </h1>
+      <h1 id="wedding-title">Nico <span>&amp;</span> Fery</h1>
 
-      <div class="divider" aria-hidden="true">
-        <span></span> ♥ <span></span>
-      </div>
+      <div class="divider" aria-hidden="true"><span></span> ♥ <span></span></div>
 
-      <p class="invitation-line">
-        Dengan penuh kebahagiaan, kami mengundang
-      </p>
+      <p class="invitation-line">Dengan penuh kebahagiaan, kami mengundang</p>
+         <p>Kepada Yth.</p>
+      <p class="guest-label">Bapak/Ibu/Saudara/i</p>
 
-      <p>Kepada Yth.</p>
 
-      <p class="guest-label">
-        Bapak/Ibu/Saudara/i
-      </p>
-
-      <h2 id="guestName">
+    <h2 id="guestName">
         Tamu Undangan
-      </h2>
-
+    </h2>
       <p class="date-label">JUM'AT</p>
-
       <p class="date">04 DESEMBER 2026</p>
 
       <button class="open-button" onclick="openInvitation()">
@@ -56,23 +42,17 @@
       </button>
 
       <p class="fade-in fade-delay-1">
-        Dengan penuh cinta, kami mengundang Anda
-      </p>
-
+    Dengan penuh cinta, kami mengundang Anda</p>
     </section>
   </main>
 
-  <!-- Musik Undangan -->
-  <audio id="weddingMusic" loop>
-    <source src="lagu.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- JavaScript -->
   <script src="script.js"></script>
-
-  <script>
+<audio id="weddingMusic" loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+<script>
     continueWeddingMusic();
-  </script>
+</script>
 
 </body>
 </html>

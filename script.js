@@ -1,5 +1,3 @@
-
-
 function openInvitation() {
 
     const music = document.getElementById("weddingMusic");
@@ -127,26 +125,32 @@ setInterval(updateCountdown, 1000);
 
 /* NAMA TAMU UNDANGAN */
 
-const urlParams = new URLSearchParams(window.location.search);
+document.addEventListener("DOMContentLoaded", function () {
 
-const guestName = urlParams.get("to");
+    const urlParams = new URLSearchParams(window.location.search);
 
-const guestElement = document.getElementById("guestName");
+    const guestName = urlParams.get("to");
 
-if (guestElement && guestName) {
+    const guestElement = document.getElementById("guestName");
 
-    guestElement.textContent = guestName;
+    if (guestElement && guestName) {
+        guestElement.textContent = guestName.replace(/\+/g, " ").trim();
+    }
 
-}
+});
 
 const music = document.getElementById("weddingMusic");
 
-music.addEventListener("loadedmetadata", function () {
-    music.currentTime = 22;
-});
+if (music) {
 
-music.addEventListener("timeupdate", function () {
-    if (music.currentTime >= 309) {
+    music.addEventListener("loadedmetadata", function () {
         music.currentTime = 22;
-    }
-});
+    });
+
+    music.addEventListener("timeupdate", function () {
+        if (music.currentTime >= 309) {
+            music.currentTime = 22;
+        }
+    });
+
+}

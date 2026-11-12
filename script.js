@@ -124,20 +124,13 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 /* NAMA TAMU UNDANGAN */
+const urlParams = new URLSearchParams(window.location.search);
+const guestName = urlParams.get("to");
+const guestElement = document.getElementById("guestName");
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    const urlParams = new URLSearchParams(window.location.search);
-
-    const guestName = urlParams.get("to");
-
-    const guestElement = document.getElementById("guestName");
-
-    if (guestElement && guestName) {
-        guestElement.textContent = guestName.replace(/\+/g, " ").trim();
-    }
-
-});
+if (guestElement && guestName && guestName.trim() !== "") {
+    guestElement.textContent = guestName.trim();
+}
 
 const music = document.getElementById("weddingMusic");
 

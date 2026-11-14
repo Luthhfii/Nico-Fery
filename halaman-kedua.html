@@ -10,8 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  </head>
+  <body>
   <main class="details-page">
     <!-- Salam dan pengantar -->
     <section class="intro section-card">
@@ -113,14 +113,6 @@
     <source src="lagu.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Memanggil JavaScript -->
-<script src="script.js"></script>
-
-<!-- Melanjutkan Musik -->
-<script>
-    continueWeddingMusic();
-</script>
-
 <div class="petal-container">
     <span class="petal">✿</span>
     <span class="petal">❀</span>
@@ -191,7 +183,6 @@
 </div>
 </article>
 </section>
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -678,9 +669,6 @@
 }
 
     </style>
-</head>
-
-<body>
 
     <main class="gallery-page">
 
@@ -795,15 +783,7 @@
 
         <img src="" alt="Foto diperbesar" id="lightboxImage">
     </div>
-<script src="script.js"></script>
 
-<script>
-    continueWeddingMusic();
-</script>
-
-
-</body>
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -985,9 +965,6 @@
             }
         }
     </style>
-</head>
-
-<body>
 
     <main class="gift-page">
 
@@ -1086,12 +1063,75 @@
 
         }
     </script>
+
+<!-- BAGIAN UCAPAN DAN DOA -->
+<section class="ucapan-section" id="ucapan">
+
+    <div class="ucapan-container">
+
+        <h2>Ucapan & Doa</h2>
+
+        <p class="ucapan-subtitle">
+            Berikan doa dan ucapan terbaik untuk kedua mempelai.
+        </p>
+
+        <form id="formUcapan">
+
+            <div class="form-group">
+                <label for="namaUcapan">Nama</label>
+                <input
+                    type="text"
+                    id="namaUcapan"
+                    placeholder="Masukkan nama kamu"
+                    maxlength="80"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="kehadiranUcapan">Konfirmasi Kehadiran</label>
+                <select id="kehadiranUcapan" required>
+                    <option value="">Pilih kehadiran</option>
+                    <option value="Hadir">Hadir</option>
+                    <option value="Tidak Hadir">Tidak Hadir</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="pesanUcapan">Ucapan & Doa</label>
+                <textarea
+                    id="pesanUcapan"
+                    placeholder="Tuliskan ucapan dan doa terbaik..."
+                    maxlength="500"
+                    rows="5"
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit" id="tombolKirimUcapan">
+                Kirim Ucapan
+            </button>
+
+            <p id="statusUcapan" aria-live="polite"></p>
+
+        </form>
+
+        <div class="daftar-ucapan">
+            <h3>Ucapan dari Tamu</h3>
+            <div id="daftarUcapan">
+                <p>Memuat ucapan...</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 <script src="script.js"></script>
 
 <script>
     continueWeddingMusic();
 </script>
 
-</body>
+<script type="module" src="ucapan.js"></script>
 </body>
 </html>

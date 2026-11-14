@@ -1,31 +1,59 @@
 function openInvitation() {
 
-    const music = document.getElementById("weddingMusic");
+const music = document.getElementById("weddingMusic"
+);
 
-    if (!music) {
-        window.location.href = "halaman-kedua.html";
-        return;
-    }
+if (music
+) {
 
-    music.play()
-        .then(function () {
+    music.addEventListener("loadedmetadata", function 
+() {
 
-            // Musik berhasil dimulai
-            sessionStorage.setItem("musicStarted", "true");
+        const savedTime = sessionStorage.getItem("musicTime"
+);
 
-            // Buka halaman kedua
-            window.location.href = "halaman-kedua.html";
+        if (savedTime !== null
+) {
+            const time = Number(savedTime
+);
 
-        })
-        .catch(function () {
+            if (time >= 22 && time < 309
+) {
+                music.currentTime = time
+;
+            } 
+else 
+{
+                music.currentTime = 22
+;
+            }
+        } 
+else 
+{
+            music.currentTime = 22
+;
+        }
 
-            // Jika musik gagal diputar,
-            // undangan tetap bisa dibuka
-            window.location.href = "halaman-kedua.html";
+    });
 
-        });
+    music.addEventListener("timeupdate", function 
+() {
 
-}
+        if (music.currentTime >= 309
+) {
+            music.currentTime = 22
+;
+        }
+
+        if (!music.paused
+) {
+            sessionStorage.setItem("musicTime", music.currentTime
+);
+        }
+
+    });
+
+}}
 
 
 function continueWeddingMusic() {

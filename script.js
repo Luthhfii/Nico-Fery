@@ -53,7 +53,7 @@ else
 
     });
 
-}}
+}
 
 
 function continueWeddingMusic() {

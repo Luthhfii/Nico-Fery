@@ -63,3 +63,30 @@ if (music) {
         }
     });
 }
+
+function openInvitation() {
+    const music = document.getElementById("weddingMusic");
+
+    // Bawa nama tamu ke halaman kedua
+    const halamanKedua = "halaman-kedua.html" + window.location.search;
+
+    if (!music) {
+        window.location.href = halamanKedua;
+        return;
+    }
+
+    music.currentTime = 22;
+
+    music.play()
+        .then(function () {
+            sessionStorage.setItem("musicStarted", "true");
+            sessionStorage.setItem("musicTime", music.currentTime);
+
+            window.location.href = halamanKedua;
+        })
+        .catch(function (error) {
+            console.log("Musik gagal diputar:", error);
+            alert("Musik gagal diputar. Periksa file lagu.mp3.");
+        });
+}
+

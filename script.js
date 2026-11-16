@@ -7,22 +7,24 @@ function openInvitation() {
         return;
     }
 
+    // Mulai lagu dari detik 22
+    music.currentTime = 22;
+
+    sessionStorage.setItem("musicStarted", "true");
+
     music.play()
         .then(function () {
 
-            // Musik berhasil dimulai
-            sessionStorage.setItem("musicStarted", "true");
+            sessionStorage.setItem(
+                "musicTime",
+                music.currentTime
+            );
 
-            // Buka halaman kedua
             window.location.href = "halaman-kedua.html";
 
         })
         .catch(function () {
-
-            // Jika musik gagal diputar,
-            // undangan tetap bisa dibuka
             window.location.href = "halaman-kedua.html";
-
         });
 
 }
@@ -136,14 +138,13 @@ const music = document.getElementById("weddingMusic");
 
 if (music) {
 
-    music.addEventListener("loadedmetadata", function () {
-        music.currentTime = 22;
-    });
-
     music.addEventListener("timeupdate", function () {
+
         if (music.currentTime >= 309) {
             music.currentTime = 22;
+            music.play();
         }
+
     });
 
 }

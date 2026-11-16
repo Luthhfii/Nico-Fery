@@ -7,16 +7,21 @@ function openInvitation() {
         return;
     }
 
-    // Mulai lagu dari detik ke-22
+    // Mulai lagu dari detik 22
     music.currentTime = 22;
 
-    // Mulai musik setelah tombol ditekan
+    sessionStorage.setItem("musicStarted", "true");
+
     music.play()
         .then(function () {
 
-            sessionStorage.setItem("musicStarted", "true");
-            sessionStorage.setItem("musicTime", music.currentTime);
+            // Simpan posisi musik
+            sessionStorage.setItem(
+                "musicTime",
+                music.currentTime
+            );
 
+            // Pindah ke halaman kedua
             window.location.href = "halaman-kedua.html";
 
         })

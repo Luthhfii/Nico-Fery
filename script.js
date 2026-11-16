@@ -14,7 +14,6 @@ function openInvitation() {
         window.location.href = halamanKedua;
         return;
     }
-
     // Mulai lagu dari detik ke-22
     music.currentTime = 22;
 

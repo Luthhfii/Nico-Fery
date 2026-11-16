@@ -1,5 +1,5 @@
-function openInvitation() {
 
+function openInvitation() {
     const music = document.getElementById("weddingMusic");
 
     if (!music) {
@@ -7,144 +7,59 @@ function openInvitation() {
         return;
     }
 
-    // Mulai lagu dari detik 22
+    // Mulai lagu dari detik ke-22
     music.currentTime = 22;
-
-    sessionStorage.setItem("musicStarted", "true");
 
     music.play()
         .then(function () {
-
-            // Simpan posisi musik
-            sessionStorage.setItem(
-                "musicTime",
-                music.currentTime
-            );
+            sessionStorage.setItem("musicStarted", "true");
+            sessionStorage.setItem("musicTime", music.currentTime);
 
             // Pindah ke halaman kedua
             window.location.href = "halaman-kedua.html";
-
         })
         .catch(function (error) {
-
             console.log("Musik gagal diputar:", error);
-
-            window.location.href = "halaman-kedua.html";
-
+            alert("Musik gagal diputar. Periksa file lagu.mp3.");
         });
-
 }
 
 
 function continueWeddingMusic() {
-const music = document.getElementById("weddingMusic");
+    const music = document.getElementById("weddingMusic");
 
-if (music) {
+    if (!music) return;
 
-    music.addEventListener("timeupdate", function () {
+    // Lanjutkan musik jika sebelumnya sudah dimulai
+    if (sessionStorage.getItem("musicStarted") === "true") {
+        const savedTime = sessionStorage.getItem("musicTime");
 
-        if (music.currentTime >= 309) {
-            music.currentTime = 22;
+        if (savedTime !== null) {
+            music.currentTime = Number(savedTime);
         }
 
-    });
-
-}
+        music.play().catch(function (error) {
+            console.log("Musik perlu diputar kembali:", error);
+        });
+    }
 
     // Simpan posisi lagu saat berpindah halaman
     window.addEventListener("beforeunload", function () {
         if (!music.paused) {
-            sessionStorage.setItem(
-                "musicTime",
-                music.currentTime
-            );
+            sessionStorage.setItem("musicTime", music.currentTime);
         }
     });
 }
 
-
-/* COUNTDOWN PERNIKAHAN */
-
-// GANTI tanggal dan waktu sesuai hari pernikahan
-const weddingDate = new Date("2026-12-04T08:00:00").getTime();
-
-function updateCountdown() {
-
-    const now = new Date().getTime();
-
-    const distance = weddingDate - now;
-
-    const daysElement = document.getElementById("days");
-    const hoursElement = document.getElementById("hours");
-    const minutesElement = document.getElementById("minutes");
-    const secondsElement = document.getElementById("seconds");
-
-    if (
-        !daysElement ||
-        !hoursElement ||
-        !minutesElement ||
-        !secondsElement
-    ) {
-        return;
-    }
-
-    if (distance <= 0) {
-
-        daysElement.textContent = "00";
-        hoursElement.textContent = "00";
-        minutesElement.textContent = "00";
-        secondsElement.textContent = "00";
-
-        return;
-    }
-
-    const days = Math.floor(
-        distance / (1000 * 60 * 60 * 24)
-    );
-
-    const hours = Math.floor(
-        (distance / (1000 * 60 * 60)) % 24
-    );
-
-    const minutes = Math.floor(
-        (distance / (1000 * 60)) % 60
-    );
-
-    const seconds = Math.floor(
-        (distance / 1000) % 60
-    );
-
-    daysElement.textContent = String(days).padStart(2, "0");
-    hoursElement.textContent = String(hours).padStart(2, "0");
-    minutesElement.textContent = String(minutes).padStart(2, "0");
-    secondsElement.textContent = String(seconds).padStart(2, "0");
-
-}
-
-updateCountdown();
-
-setInterval(updateCountdown, 1000);
-
-/* NAMA TAMU UNDANGAN */
-const urlParams = new URLSearchParams(window.location.search);
-const guestName = urlParams.get("to");
-const guestElement = document.getElementById("guestName");
-
-if (guestElement && guestName && guestName.trim() !== "") {
-    guestElement.textContent = guestName.trim();
-}
+/* PENGULANGAN MUSIK */
 
 const music = document.getElementById("weddingMusic");
 
 if (music) {
-
     music.addEventListener("timeupdate", function () {
-
         if (music.currentTime >= 309) {
             music.currentTime = 22;
             music.play();
         }
-
     });
-
 }

@@ -37,25 +37,19 @@ function openInvitation() {
 
 
 function continueWeddingMusic() {
-    const music = document.getElementById("weddingMusic");
+const music = document.getElementById("weddingMusic");
 
-    if (!music) return;
+if (music) {
 
-    const musicStarted = sessionStorage.getItem("musicStarted");
-    const savedTime = sessionStorage.getItem("musicTime");
+    music.addEventListener("timeupdate", function () {
 
-    if (musicStarted === "true") {
-
-        // Lanjutkan dari posisi lagu terakhir
-        if (savedTime !== null) {
-            music.currentTime = Number(savedTime);
+        if (music.currentTime >= 309) {
+            music.currentTime = 22;
         }
 
-        // Putar musik kembali
-        music.play().catch(function () {
-            console.log("Musik perlu dimulai kembali.");
-        });
-    }
+    });
+
+}
 
     // Simpan posisi lagu saat berpindah halaman
     window.addEventListener("beforeunload", function () {

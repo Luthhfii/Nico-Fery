@@ -66,9 +66,8 @@ if (music) {
 
 function openInvitation() {
     const music = document.getElementById("weddingMusic");
-
-    // Bawa nama tamu ke halaman kedua
-    const halamanKedua = "halaman-kedua.html" + window.location.search;
+    const halamanKedua =
+        "halaman-kedua.html" + window.location.search;
 
     if (!music) {
         window.location.href = halamanKedua;
@@ -89,4 +88,3 @@ function openInvitation() {
             alert("Musik gagal diputar. Periksa file lagu.mp3.");
         });
 }
-
